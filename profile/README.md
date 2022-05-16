@@ -3,10 +3,10 @@
 ![Logo-2-Copy](https://user-images.githubusercontent.com/32592458/168223382-65194916-4c1f-41ab-9892-eb71fcc2e3de.svg)
 
 
-Glific is a WhatsApp based open source communication platform for NGOs to have conversations with their community.
+Glific is a WhatsApp based open source 2-way communication platform for NGOs to have conversations with their community.
 It is being developed under Project Tech4Dev initiative of Chintu Gudiya Foundation.
 
-Glific aims to empower social organisations to act decisively and quickly on grassroots information through a range of host of features ranging from automated responses to comprehensive analytics.
+Glific aims to empower social organisations to act decisively and quickly on grassroots information through a host of features ranging from automated responses to comprehensive analytics.
 
 ## Have a question
 
