@@ -10,23 +10,12 @@ Glific aims to empower social organisations to act decisively and quickly on gra
 
 ## Have a question
 
-Chat with us on [discord](https://discord.com/invite/me6NCMu) or send a message on [WhatsApp](https://api.whatsapp.com/send?phone=917302307943&text=Hi%20Glific%20team)
-
+Chat with us on [discord](https://discord.com/invite/me6NCMu) or send a message on [WhatsApp](https://api.whatsapp.com/send?phone=918657048982&text=Hi%20Glific%20team)
 
 ## Looking to contribute
 
-Glific has a split tech architecture where the frontend is in React and the backend is in Elixir. 
+Glific has a split tech architecture where the frontend repositories are in React and the backend is in Elixir. 
 
 - [Backend repository](https://github.com/glific/glific)
 - [Frontend repository](https://github.com/glific/glific-frontend)
-
-We use cypress for automated testing. If you are interested in adding test cases check out our cypress repo
-
-- [Cypress repository](https://github.com/glific/cypress-testing)
-
-We also have some third party integrations support with Glific that we call our `recipes`. Check out our recipes here
-
-- [Recipes repository](https://github.com/glific/recipes)
-
-
-
+- [Web channel](https://github.com/glific/glific-web-channel)
