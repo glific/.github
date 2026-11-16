@@ -1,0 +1,57 @@
+name: Claude PR Review
+
+on:
+  workflow_call:
+    inputs:
+      repo_rules:
+        description: Repo-specific review focus appended to the shared bot prompt
+        type: string
+        default: ""
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN:
+        required: true
+
+jobs:
+  claude-review:
+    # Fork PRs get no secrets, so skip them; drafts are reviewed once marked ready.
+    if: >-
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      pull-requests: write
+      id-token: write
+
+    steps:
+      - name: Checkout PR code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout shared review config
+        uses: actions/checkout@v4
+        with:
+          repository: glific/.github
+          ref: main
+          path: .review-config
+          sparse-checkout: review
+
+      - name: Run Claude review
+        uses: anthropics/claude-code-action@f3b070c88125d33dbae5653df5f143101d4ea9dc # v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          track_progress: true
+          prompt: |
+            REPO: ${{ github.repository }}
+            PR NUMBER: ${{ github.event.pull_request.number }}
+            BASE BRANCH: ${{ github.event.pull_request.base.ref }}
+
+            Follow the instructions in .review-config/review/pr-bot.md exactly.
+
+            Repo-specific rules:
+            ${{ inputs.repo_rules }}
+          claude_args: >-
+            --model claude-sonnet-5-5
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Read,Grep,Glob"
